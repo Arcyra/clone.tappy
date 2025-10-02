@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://tji05fg2ovnu"]
+
+[ext_resource type="Script" uid="uid://2uer2dtqyn8u" path="res://Entities/Plane/Plane.gd" id="1_2f5bx"]
+[ext_resource type="Texture2D" uid="uid://c4f8whrnbsg7a" path="res://Entities/Plane/Art/planes_sheet.png" id="1_84vor"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6aff"]
+atlas = ExtResource("1_84vor")
+region = Rect2(0, 0, 88, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttdi2"]
+atlas = ExtResource("1_84vor")
+region = Rect2(88, 0, 88, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnt73"]
+atlas = ExtResource("1_84vor")
+region = Rect2(176, 0, 88, 73)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8rgo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6aff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttdi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnt73")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2f5bx"]
+radius = 30.377829
+
+[sub_resource type="Animation" id="Animation_2f5bx"]
+resource_name = "Jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.4363323129985824, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ge16t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.17453292]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ge16t"]
+_data = {
+&"Jump": SubResource("Animation_2f5bx"),
+&"RESET": SubResource("Animation_ge16t")
+}
+
+[node name="Plane" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_2f5bx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = 0.17453292
+sprite_frames = SubResource("SpriteFrames_v8rgo")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 2)
+shape = SubResource("CircleShape2D_2f5bx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ge16t")
+}

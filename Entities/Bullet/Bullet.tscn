@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbbddvhcwolbt"]
+
+[ext_resource type="Script" uid="uid://4ju7otgk7f5c" path="res://Entities/Bullet/Bullet.gd" id="1_h8dem"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_h8dem")

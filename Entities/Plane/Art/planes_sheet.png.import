@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvd5k6ooiyofv"
-path="res://.godot/imported/clouds_2.png-682f6abed3dd3038b3dcd336c38f6342.ctex"
+uid="uid://c4f8whrnbsg7a"
+path="res://.godot/imported/planes_sheet.png-8984c8a09a9001f079e5806fbc689ced.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/background/clouds_2.png"
-dest_files=["res://.godot/imported/clouds_2.png-682f6abed3dd3038b3dcd336c38f6342.ctex"]
+source_file="res://Entities/Plane/Art/planes_sheet.png"
+dest_files=["res://.godot/imported/planes_sheet.png-8984c8a09a9001f079e5806fbc689ced.ctex"]
 
 [params]
 

@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://qcwx5nfgvy4p"]
+[gd_scene load_steps=5 format=3 uid="uid://qcwx5nfgvy4p"]
 
-[ext_resource type="Texture2D" uid="uid://u6elckg3jp1t" path="res://Assets/background/rocks_2.png" id="1_iukft"]
+[ext_resource type="Texture2D" uid="uid://u6elckg3jp1t" path="res://Assets/Backrounds/rocks_2.png" id="1_iukft"]
+[ext_resource type="PackedScene" uid="uid://tji05fg2ovnu" path="res://Entities/Plane/Plane.tscn" id="2_gl6un"]
+[ext_resource type="PackedScene" uid="uid://0s1jw40xnwug" path="res://Entities/Barrier/Barrier.tscn" id="3_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://bgn6y5ygcukb8" path="res://Entities/Pipes/Pipes.tscn" id="4_kldst"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Rocks2" type="Sprite2D" parent="."]
-position = Vector2(244, 558)
-scale = Vector2(0.57314813, 0.57314813)
+position = Vector2(28, 470)
 texture = ExtResource("1_iukft")
+
+[node name="Barrier" parent="." instance=ExtResource("3_j5yw3")]
+
+[node name="Plane" parent="." instance=ExtResource("2_gl6un")]
+texture_filter = 1
+position = Vector2(67, 122)
+
+[node name="Pipes" parent="." instance=ExtResource("4_kldst")]
+position = Vector2(460, 318)

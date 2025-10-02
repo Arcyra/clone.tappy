@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4vmonbbnlmxa"
-path="res://.godot/imported/clouds_1.png-51cabc912a8256a78d55a791374b5ea5.ctex"
+uid="uid://byvjqscaqnl56"
+path="res://.godot/imported/laser2.png-c9c60a7686b2b2835fc4060f0ebfaa51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/background/clouds_1.png"
-dest_files=["res://.godot/imported/clouds_1.png-51cabc912a8256a78d55a791374b5ea5.ctex"]
+source_file="res://Entities/Laser/Art/laser2.png"
+dest_files=["res://.godot/imported/laser2.png-c9c60a7686b2b2835fc4060f0ebfaa51.ctex"]
 
 [params]
 
