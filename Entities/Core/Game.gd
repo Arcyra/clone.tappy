@@ -11,6 +11,10 @@ const PIPES = preload("uid://bgn6y5ygcukb8")
 func _ready() -> void:
 	spawn_pipes()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Exit", false):
+		get_tree().change_scene_to_file("res://Scenes/Main/Main.tscn")
+
 func spawn_pipes() -> void:
 	var np: Node2D = PIPES.instantiate()
 	var x_pos: float = upper_marker.position.x

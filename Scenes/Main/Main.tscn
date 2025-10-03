@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://v58fuf1hrlfb"]
+
+[ext_resource type="Texture2D" uid="uid://dx8ar5di5c2p6" path="res://Assets/Backrounds/sky.png" id="1_qtv3y"]
+[ext_resource type="Script" uid="uid://bxf8bq7dudqik" path="res://Scenes/Main/Main.gd" id="1_w20t6"]
+[ext_resource type="LabelSettings" uid="uid://cypuwusduoww5" path="res://Scenes/Main/Title.tres" id="2_cmk6n"]
+[ext_resource type="LabelSettings" uid="uid://ctceykcpbvtrs" path="res://Scenes/Main/PressPlay.tres" id="3_cmk6n"]
+[ext_resource type="LabelSettings" uid="uid://d4mdxlofkslpb" path="res://Scenes/Main/Score.tres" id="4_i3fi7"]
+[ext_resource type="AudioStream" uid="uid://dohue40ky10o0" path="res://Assets/Audio/bgm_menu.mp3" id="5_o8wgc"]
+
+[sub_resource type="Animation" id="Animation_i3fi7"]
+resource_name = "Flash"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressPlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8wgc"]
+_data = {
+&"Flash": SubResource("Animation_i3fi7")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w20t6")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qtv3y")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "TAPPY
+PLANE"
+label_settings = ExtResource("2_cmk6n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressPlay" type="Label" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.52467954)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS SPACE
+TO
+PLAY"
+label_settings = ExtResource("3_cmk6n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "BEST SCORE"
+label_settings = ExtResource("4_i3fi7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "5"
+label_settings = ExtResource("4_i3fi7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o8wgc")
+}
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_o8wgc")
+volume_db = -20.0
+autoplay = true
