@@ -1,4 +1,7 @@
-extends CharacterBody2D
+class_name Tappy extends CharacterBody2D
+
+# Signal Variables
+signal DIED
 
 # Onready Variables
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,8 +15,6 @@ var _died: bool = false
 var _score: int = 0
 
 func _physics_process(delta: float) -> void:
-	if _died: return
-	
 	movement(delta)
 	if is_on_floor():
 		on_died()
@@ -23,16 +24,17 @@ func _physics_process(delta: float) -> void:
 func movement(delta: float) -> void:
 	velocity += get_gravity() * delta
 	
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Jump") and not _died:
 		velocity.y = JUMP_VELOCITY
 		animation_player.play("Jump")
 
 func on_died() -> void:
 	_died = true
 	animated_sprite_2d.stop()
+	DIED.emit()
 	# I waited little bit bc. If the scene reloads instantly it throws error. 
-	await get_tree().create_timer(0.1).timeout
-	get_tree().reload_current_scene()    
+	#await get_tree().create_timer(2).timeout
+	#get_tree().reload_current_scene()    
 
 func increase_score():
 	_score+=1
