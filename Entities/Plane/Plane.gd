@@ -1,7 +1,8 @@
 class_name Tappy extends CharacterBody2D
 
 # Signal Variables
-signal DIED
+#signal DIED
+#signal SCORE_INCREASED
 
 # Onready Variables
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -31,10 +32,9 @@ func movement(delta: float) -> void:
 func on_died() -> void:
 	_died = true
 	animated_sprite_2d.stop()
-	DIED.emit()
-	# I waited little bit bc. If the scene reloads instantly it throws error. 
-	#await get_tree().create_timer(2).timeout
-	#get_tree().reload_current_scene()    
+	SignalHub.PLANE_DIED.emit()
+	ScoreManager.best_score = _score
 
 func increase_score():
-	_score+=1
+	_score+=1  
+	SignalHub.SCORE_INCREASED.emit(_score)

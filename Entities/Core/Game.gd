@@ -9,11 +9,12 @@ extends Node2D
 const PIPES = preload("uid://bgn6y5ygcukb8")
 
 func _ready() -> void:
+	get_tree().paused = false
 	spawn_pipes()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Exit", false):
-		get_tree().change_scene_to_file("res://Scenes/Main/Main.tscn")
+# This function works intantly.
+func _enter_tree() -> void:
+	SignalHub.PLANE_DIED.connect(_on_plane_died)
 
 func spawn_pipes() -> void:
 	var np: Node2D = PIPES.instantiate()

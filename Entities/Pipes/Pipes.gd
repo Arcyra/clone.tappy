@@ -15,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 		die()
 
 func _on_score_body_entered(body: Node2D) -> void:
-	if body.has_method("increase_score"):
+	if body is Tappy:
 		body.increase_score()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
