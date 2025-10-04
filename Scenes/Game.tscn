@@ -1,25 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://qcwx5nfgvy4p"]
+[gd_scene load_steps=7 format=3 uid="uid://qcwx5nfgvy4p"]
 
 [ext_resource type="Script" uid="uid://hq36d2086jj0" path="res://Entities/Core/Game.gd" id="1_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://bs5cx1e73ynaa" path="res://Entities/UI/Parallax/ParalaxBackground.tscn" id="2_7lihs"]
 [ext_resource type="Script" uid="uid://dxjllwugmtxi3" path="res://Entities/Notes/MyNotes.gd" id="2_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://tji05fg2ovnu" path="res://Entities/Plane/Plane.tscn" id="2_gl6un"]
 [ext_resource type="PackedScene" uid="uid://0s1jw40xnwug" path="res://Entities/Barrier/Barrier.tscn" id="3_j5yw3"]
-[ext_resource type="PackedScene" uid="uid://dpby3j0ki2056" path="res://Entities/UI/UI.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://dpby3j0ki2056" path="res://Entities/UI/Game/Game.tscn" id="4_kldst"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_j5yw3")
 
-[node name="MyNotes" type="Node" parent="."]
-script = ExtResource("2_b2bpf")
+[node name="ParalaxBackground" parent="." instance=ExtResource("2_7lihs")]
+z_index = -1
+scale = Vector2(0.79, 0.79)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("4_kldst")]
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("4_kldst")]
 
 [node name="Barrier" parent="." instance=ExtResource("3_j5yw3")]
 
 [node name="Plane" parent="." instance=ExtResource("2_gl6un")]
-position = Vector2(67, 122)
+position = Vector2(37, 387)
 
 [node name="PipesContainer" type="Node" parent="."]
 
@@ -32,5 +34,8 @@ position = Vector2(596, 242)
 
 [node name="LowerMarker" type="Marker2D" parent="."]
 position = Vector2(596, 597)
+
+[node name="MyNotes" type="Node" parent="."]
+script = ExtResource("2_b2bpf")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

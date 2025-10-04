@@ -7,6 +7,8 @@ class_name Tappy extends CharacterBody2D
 # Onready Variables
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var engine: AudioStreamPlayer2D = $Engine
+@onready var score: AudioStreamPlayer2D = $Score
 
 # Constant Variables
 const JUMP_VELOCITY = -400.0
@@ -30,11 +32,14 @@ func movement(delta: float) -> void:
 		animation_player.play("Jump")
 
 func on_died() -> void:
+	set_physics_process(false)
 	_died = true
+	engine.stop()
 	animated_sprite_2d.stop()
 	SignalHub.PLANE_DIED.emit()
 	ScoreManager.best_score = _score
 
 func increase_score():
+	score.play()
 	_score+=1  
 	SignalHub.SCORE_INCREASED.emit(_score)

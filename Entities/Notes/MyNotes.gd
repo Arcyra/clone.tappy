@@ -41,3 +41,17 @@ extends Node
 	
 	Link: "https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html"
 """
+
+"""
+	Parallax2D is new read the docs. It takes sprite2d's and uses depthed backgrounds. 
+	Sprite2D's Offest must be off centered.
+	
+	If your game doesn't have camera u can use repeat properties just use autoscroll.. 
+	In this you can repeat background images. Repeat size is your assets pixel size.
+	
+	U just have to create Parallax2Ds and sprites.
+	
+	If you scale the images using the parallax2d transform, parallax won't work. 
+	Instead, save this parallax background as a scene and set the desired scale in that scene 
+	when you add it to the game scene.
+"""

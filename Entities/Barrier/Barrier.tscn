@@ -6,7 +6,7 @@ normal = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t3hvm"]
 
 [node name="Barrier" type="StaticBody2D"]
-collision_mask = 2
+collision_mask = 0
 
 [node name="Top" type="CollisionShape2D" parent="."]
 position = Vector2(0, -18)
